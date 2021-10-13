@@ -1,5 +1,9 @@
 # Modeling and simulating inverse kinematics of a robotic arm using neural networks
 
+** This project was developed as a final project of Robotics Engineer Bachelor at Universidade Federal do ABC**
+
+**You can read the full work (here)[https://drive.google.com/file/d/125PrjD0Q0v2bcdmn96Kus-rb2KmGigdM/view?usp=sharing]
+
 ## Authors:
 - Lucas Nicolau Aperguis
 - Pedro Gabriel Gengo Lourenço
@@ -42,5 +46,6 @@ We achieved best results using the strategy of specialized neural networks. Belo
 ![](imgs/singleNN_path2.JPG)
 
 - Specialized Neural Networks:
+
 ![](imgs/specNN_path1.JPG)
 ![](imgs/specNN_path2.JPG)
