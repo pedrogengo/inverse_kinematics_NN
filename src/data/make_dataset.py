@@ -24,7 +24,6 @@ def create_train_points(theta_list, robot):
     a entrada do nosso treinamento.
     '''
     coord_endeffector = []
-    new_theta_list = []
     for theta1, theta2, theta3 in theta_list:
         robot.update_theta(0, theta1)
         robot.update_theta(1, theta2)
@@ -45,7 +44,7 @@ def make_dataset(robot, thetas, dataset_name):
     dataset = ''
 
     for i, j in zip(X, y):
-        dataset += ','.join(str(i)) + ',' + ','.join(str(j)) + '\n'
+        dataset += f'{i[0]},{i[1]},{i[2]},{j[0]},{j[1]},{j[2]}\n'
     with open(f'data/{dataset_name}.csv', 'w') as f:
         f.write(dataset)
     

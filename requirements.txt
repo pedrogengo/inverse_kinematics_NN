@@ -1,3 +1,7 @@
 plotly
 numpy
 torch
+matplotlib
+pandas
+sklearn
+tensorflow

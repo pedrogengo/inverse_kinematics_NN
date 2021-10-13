@@ -16,7 +16,7 @@ class Manipulator():
     def update_theta(self, joint_index, theta):
         self.joints[joint_index].update_theta(theta)
     
-    def plot_workspace(self, theta_list):
+    def plot_workspace(self, theta_list, initial):
         X, Y, Z = [], [], []
     
         for theta1 in theta_list[0]:
@@ -30,21 +30,43 @@ class Manipulator():
                     X.append(self.get_X())
                     Y.append(self.get_Y())
                     Z.append(self.get_Z())
+                    
+        for i in range(len(self.joints)):
+            self.update_theta(i, initial[i])
+        self.forward_kinematics()
+                    
+        X_ = self.get_all_X()
+        Y_ = self.get_all_Y()
+        Z_ = self.get_all_Z()
         
         fig = go.Figure(data=go.Scatter3d(
             x=X, y=Y, z=Z,
             mode = 'markers',
             marker=dict(
                 size=0,
-                color=3,
-                colorscale='Viridis',
+                color="green",
+                opacity=0.5
                 )
             ))
+        
+        fig.add_trace(go.Scatter3d(
+                            x=X_, y=Y_, z=Z_,
+                            marker=dict(
+                                size=0,
+                                color=3,
+                                colorscale='Viridis',
+                            ),
+                            line=dict(
+                                color='darkblue',
+                                width=5
+                            )
+                        ))
 
         fig.update_layout(scene = dict(
                                         xaxis = dict(nticks=8, range=[min(X) - 1,max(X) + 1]),
                                         yaxis = dict(nticks=8, range=[min(Y) - 1,max(Y) + 1]),
-                                        zaxis = dict(nticks=8, range=[min(Z) - 1,max(Z) + 1])))
+                                        zaxis = dict(nticks=8, range=[min(Z) - 1,max(Z) + 1])),
+                           width=700, height=700, autosize=False, scene_aspectmode='cube', showlegend=False)
         fig.show()
     
     def static_plot(self):
@@ -62,13 +84,16 @@ class Manipulator():
             line=dict(
                 color='darkblue',
                 width=2
-            )
+            ),
         ))
 
         fig.update_layout(scene = dict(
                                         xaxis = dict(nticks=8, range=[min(X) - 1,max(X) + 1]),
                                         yaxis = dict(nticks=8, range=[min(Y) - 1,max(Y) + 1]),
-                                        zaxis = dict(nticks=8, range=[min(Z) - 1,max(Z) + 1])))
+                                        zaxis = dict(nticks=8, range=[min(Z) - 1,max(Z) + 1])),
+                           autosize=False,
+                           width=700,
+                           height=700,)
         fig.show()
 
     def get_all_X(self):
