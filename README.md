@@ -1,8 +1,8 @@
 # Modeling and simulating inverse kinematics of a robotic arm using neural networks
 
-** This project was developed as a final project of Robotics Engineer Bachelor at Universidade Federal do ABC**
+**This project was developed as a final project of Robotics Engineer Bachelor at Universidade Federal do ABC**
 
-**You can read the full work (here)[https://drive.google.com/file/d/125PrjD0Q0v2bcdmn96Kus-rb2KmGigdM/view?usp=sharing]
+**You can read the full work [here](https://drive.google.com/file/d/125PrjD0Q0v2bcdmn96Kus-rb2KmGigdM/view?usp=sharing)**
 
 ## Authors:
 - Lucas Nicolau Aperguis
